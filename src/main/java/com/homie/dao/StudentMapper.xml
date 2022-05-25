@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//myabtis.org//DTD mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.homie.dao.StudentMapper">
+    <insert id="insertStudent" parameterType="Students">
+        insert into ssmbuild.students(studentName,studentNumber,studentAge,detail)
+        values (#{studentName},#{studentNumber},#{studentAge},#{detail})
+    </insert>
+
+    <delete id="deleteStudent" parameterType="int">
+        delete from ssmbuild.students where studentID = #{studentId}
+    </delete>
+    <update id="updateStudent" parameterType="Students">
+        update ssmbuild.students
+        set studentName=#{studentName},studentNumber=#{studentNumber},studentAge=#{studentAge},detail=#{detail}
+        where studentID=#{studentID}
+    </update>
+    <select id="findStudentById" resultType="Students">
+        select *
+        from ssmbuild.students
+        where studentID=#{studentId}
+    </select>
+    <select id="findAllStudent" resultType="Students">
+        select *
+        from ssmbuild.students
+    </select>
+    <select id="findStudentByName" resultType="Students">
+        select *
+        from ssmbuild.students
+        where studentName=#{studentName}
+    </select>
+    <select id="findStudentByNumber" resultType="Students">
+        select *
+        from ssmbuild.students
+        where studentNumber=#{studentNumber}
+    </select>
+    <select id="findStudentsByDetail" resultType="Students">
+        select *
+        from ssmbuild.students
+        where detail=#{detail}
+    </select>
+</mapper>
